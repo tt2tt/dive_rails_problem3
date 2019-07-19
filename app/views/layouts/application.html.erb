@@ -13,7 +13,10 @@
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
 
+    <%= link_to "一覧", pictures_path %>
+
     <% if logged_in? %>
+      <%= link_to "投稿する", new_picture_path %>
       <%= link_to "マイページ", user_path(current_user.id) %>
       <%= link_to "ログアウト", session_path(current_user.id),method: :delete %>
     <% else %>

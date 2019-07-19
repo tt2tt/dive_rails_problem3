@@ -1,9 +1,11 @@
-<p id="notice"><%= notice %></p>
 
-<p>
   <strong>Images:</strong>
-  <%= @picture.images %>
-</p>
 
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
-<%= link_to 'Back', pictures_path %>
+  <%= image_tag @picture.images[0].url %>
+  <% @picture.images.each do |picture| %>
+    <%= image_tag picture.url %>
+  <% end %>
+
+
+  <%= link_to 'Edit', edit_picture_path(@picture) %>
+  <%= link_to 'Back', pictures_path %>

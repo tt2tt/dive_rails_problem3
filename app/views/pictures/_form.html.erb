@@ -12,11 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :images %>
-    <%= form.text_area :images, id: :picture_images %>
+    <%= form_for @picture do |f| %>
+      <%= form.label :images %>
+      <%= form.file_field :images, multiple: true %>
+      <%= form.submit %>
+    <% end %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+
   </div>
 <% end %>
