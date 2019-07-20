@@ -6,12 +6,12 @@ class PicturesController < ApplicationController
   end
 
   def show
-    @favorites = current_user.favorites.find_by(picture_id: @picture.id)
+    @favorite = current_user.favorites.find_by(picture_id: @picture.id)
   end
 
   def new
     if params[:back]
-      @picture = Picture.new(picture_params)
+      @picture = current_user.pictures.build(picture_params)
     else
       @picture = Picture.new
     end
@@ -21,12 +21,12 @@ class PicturesController < ApplicationController
   end
 
   def confirm
-    @picture = Picture.new(picture_params)
+    @picture = current_user.pictures.build(picture_params)
     render :new if @picture.invalid?
   end
 
   def create
-    @picture = Picture.new(picture_params)
+    @picture = current_user.pictures.build(picture_params)
 
     respond_to do |format|
       if @picture.save
