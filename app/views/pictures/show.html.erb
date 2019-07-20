@@ -1,4 +1,11 @@
 
+<% unless @picture.user_id == current_user.id %>
+  <% if @picture.present? %>
+    <%= link_to 'お気に入りを解除する', favorite_path(id: @picture.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'お気に入りする', favorites_path(blog_id: @picture.id), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
   <strong>Images:</strong>
 
   <% @picture.images.each do |picture| %>
