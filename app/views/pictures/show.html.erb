@@ -1,7 +1,6 @@
 
   <strong>Images:</strong>
 
-  <%= image_tag @picture.images[0].url %>
   <% @picture.images.each do |picture| %>
     <%= image_tag picture.url %>
   <% end %>

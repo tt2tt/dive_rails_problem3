@@ -9,10 +9,19 @@ class PicturesController < ApplicationController
   end
 
   def new
-    @picture = Picture.new
+    if params[:back]
+      @picture = Picture.new(picture_params)
+    else
+      @picture = Picture.new
+    end
   end
 
   def edit
+  end
+
+  def confirm
+    @picture = Picture.new(picture_params)
+    render :new if @picture.invalid?
   end
 
   def create
@@ -56,6 +65,6 @@ class PicturesController < ApplicationController
     end
 
     def picture_params
-      params.require(:picture).permit({images: []}, :images_cashe)
+      params.require(:picture).permit({images: []}, :images_cache)
     end
 end
