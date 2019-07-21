@@ -1,9 +1,10 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
+  before_action :set_sentence, only: [:show, :edit, :update, :destroy]
 
   def index
     @pictures = Picture.all
-    @sentence = Sentence.all
+    @sentences = Sentence.all
   end
 
   def show
@@ -13,8 +14,10 @@ class PicturesController < ApplicationController
   def new
     if params[:back]
       @picture = current_user.pictures.build(picture_params)
+      @sentence = current_user.sentences.build(sentence_params)
     else
       @picture = Picture.new
+      @sentence = Sentence.new
     end
   end
 
@@ -23,14 +26,16 @@ class PicturesController < ApplicationController
 
   def confirm
     @picture = current_user.pictures.build(picture_params)
+    @sentence = current_user.sentences.build(sentence_params)
     render :new if @picture.invalid?
   end
 
   def create
     @picture = current_user.pictures.build(picture_params)
+    @sentence = current_user.sentences.build(sentence_params)
 
     respond_to do |format|
-      if @picture.save
+      if @picture.save && @sentence.save
         format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
         format.json { render :show, status: :created, location: @picture }
       else
@@ -42,7 +47,7 @@ class PicturesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @picture.update(picture_params)
+      if @picture.update(picture_params) && @sentence.update(sentence_params)
         format.html { redirect_to @picture, notice: 'Picture was successfully updated.' }
         format.json { render :show, status: :ok, location: @picture }
       else
@@ -53,7 +58,7 @@ class PicturesController < ApplicationController
   end
 
   def destroy
-    @picture.destroy
+    @picture.destroy && @sentence.destroy
     respond_to do |format|
       format.html { redirect_to pictures_url, notice: 'Picture was successfully destroyed.' }
       format.json { head :no_content }
@@ -67,7 +72,7 @@ class PicturesController < ApplicationController
     end
 
     def set_sentence
-      @picture = Sentence.find(params[:id])
+      @sentence = Sentence.find(params[:id])
     end
 
     def picture_params

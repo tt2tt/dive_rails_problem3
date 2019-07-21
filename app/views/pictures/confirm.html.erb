@@ -1,5 +1,8 @@
 <h1>確認画面</h1>
 <%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
+<%= fields_for(@sentence) do |sentence| %>
+  <%= sentence.text_field :content %>
+<% end %>
 <% @picture.images.each do |picture| %>
   <%= image_tag picture.url %>
 <% end %>

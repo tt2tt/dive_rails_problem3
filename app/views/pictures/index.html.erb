@@ -11,7 +11,8 @@
   <tbody>
     <% @pictures.each do |picture| %>
       <tr>
-        
+        <% id = picture.id %>
+        <td><%= @sentences[id -1].content %></td>
         <td><%= image_tag picture.images[0].url %></td>
         <td><%= link_to 'Show', picture %></td>
         <td><%= link_to 'Edit', edit_picture_path(picture) %></td>

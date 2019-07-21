@@ -13,6 +13,10 @@
 
   <div class="field">
     <%= form_for @picture do |f| %>
+      <%= fields_for(@sentence) do |sentence| %>
+        <%= sentence.label :content %>
+        <%= sentence.text_field :content %>
+      <% end %>
       <%= form.label :images %>
       <%= form.file_field :images, multiple: true %>
 
