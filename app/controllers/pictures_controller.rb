@@ -11,7 +11,7 @@ class PicturesController < ApplicationController
 
   def new
     if params[:back]
-      @picture = current_user.pictures.build(picture_params)
+      @picture = current_user.pictures.build(picture_images_params)
     else
       @picture = Picture.new
     end
@@ -21,12 +21,12 @@ class PicturesController < ApplicationController
   end
 
   def confirm
-    @picture = current_user.pictures.build(picture_params)
+    @picture = current_user.pictures.build(picture_images_params)
     render :new if @picture.invalid?
   end
 
   def create
-    @picture = current_user.pictures.build(picture_params)
+    @picture = current_user.pictures.build(picture_images_params)
 
     respond_to do |format|
       if @picture.save
@@ -41,7 +41,7 @@ class PicturesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @picture.update(picture_params)
+      if @picture.update(picture_images_params)
         format.html { redirect_to @picture, notice: 'Picture was successfully updated.' }
         format.json { render :show, status: :ok, location: @picture }
       else
@@ -65,7 +65,7 @@ class PicturesController < ApplicationController
       @picture = Picture.find(params[:id])
     end
 
-    def picture_params
-      params.require(:picture).permit({images: []}, :images_cache)
+    def picture_images_params
+      params.require(:picture).permit(:content, {images: []}, :images_cache)
     end
 end

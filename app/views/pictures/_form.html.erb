@@ -13,12 +13,15 @@
 
   <div class="field">
     <%= form_for @picture do |f| %>
+      <%= form.label :content %>
+      <%= form.text_field :content %>
+
       <%= form.label :images %>
       <%= form.file_field :images, multiple: true %>
 
-        <% @picture.images.each do |picture| %>
+       <% @picture.images.each do |picture| %>
           <%= image_tag (picture.url) %>
-        <% end %>
+       <% end %>
 
       <%= form.hidden_field :images_cache %>
       <%= form.submit %>
