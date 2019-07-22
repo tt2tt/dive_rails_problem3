@@ -9,14 +9,15 @@
   </thead>
 
   <tbody>
+    <% count = 0 %>
     <% @pictures.each do |picture| %>
       <tr>
-        <% id = picture.id %>
-        <td><%= @sentences[id -1].content %></td>
+        <td><%= @sentences[count].content %></td>
         <td><%= image_tag picture.images[0].url %></td>
         <td><%= link_to 'Show', picture %></td>
         <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
         <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% count += 1 %>
       </tr>
     <% end %>
   </tbody>
