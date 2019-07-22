@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+
   def new
     @user = User.new
   end
@@ -29,10 +31,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    redirect_to new_user_path, notice: "削除しました"
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:profile_image, :name, :email, :password, :password_confirmation)
   end
 
+  def set_user
+    @user = User.find(params[:id])
+  end
 end
