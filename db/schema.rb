@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20190722053045) do
     t.integer "picture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "content_id"
+    t.integer "sentence_id"
   end
 
   create_table "pictures", force: :cascade do |t|

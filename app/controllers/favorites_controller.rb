@@ -1,6 +1,11 @@
 class FavoritesController < ApplicationController
+  def index
+    @user = current_user.id
+    @favorites = Favorite.where(user_id: @user).all
+  end
+
   def create
-    favorite = current_user.favorites.create(picture_id: params[:picture_id], content_id: params[:content_id])
+    favorite = current_user.favorites.create(picture_id: params[:picture_id], sentence_id: params[:sentence_id])
     redirect_to pictures_path, notice: "#{favorite.picture.user.name}さんのブログをお気に入り登録しました"
   end
 
