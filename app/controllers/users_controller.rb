@@ -6,11 +6,18 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def edit
-    @user = User.find(params[:id])
+    if current_user
+      if current_user.id == @user.id
+
+      else
+        redirect_to user_path(current_user.id)
+      end
+    else
+      redirect_to new_session_path
+    end
   end
 
   def create
@@ -23,7 +30,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to user_path(current_user.id)
     else

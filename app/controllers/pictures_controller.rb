@@ -22,6 +22,15 @@ class PicturesController < ApplicationController
   end
 
   def edit
+    if current_user
+      if current_user.id == @picture.user_id
+
+      else
+        redirect_to pictures_path
+      end
+    else
+      redirect_to new_session_path
+    end
   end
 
   def confirm
