@@ -36,7 +36,22 @@ class PicturesController < ApplicationController
   def confirm
     @picture = current_user.pictures.build(picture_params)
     @sentence = current_user.sentences.build(sentence_params)
-    render :new if @picture.invalid?
+    if @sentence.invalid? || @picture.invalid?
+      render :new
+    end
+    # if @picture.invalid?
+    #   @sentece.invalid?
+    #   render :new
+    # else
+    #   @sentece.invalid?
+    #   render :new
+    # end
+    # render :new if @picture.invalid? || @sentence.invalid?
+    # render :new if or @sentence.invalid?
+    # if @picture.invalid? || @sentence.invalid?
+    #   flash[:errors] = @picture.errors.full_messages.concat @sentence.errors.full_messages
+    #   render :new
+    # end
   end
 
   def create

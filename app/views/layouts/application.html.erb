@@ -6,24 +6,37 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   </head>
 
   <body>
-    <% flash.each do |key,value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
+    <div class="container">
+      <header>
+        <div class="inside">
+          <% flash.each do |key,value| %>
+            <%= content_tag(:div, value, class: "#{key}") %>
+          <% end %>
 
-    <%= link_to "一覧", pictures_path %>
+          <h3 class="left" id="app_name">ImagesShere</h3>
+          <div class="left" id="sill">
 
-    <% if logged_in? %>
-      <%= link_to "投稿する", new_picture_path %>
-      <%= link_to "お気に入り", favorites_path %>
-      <%= link_to "マイページ", user_path(current_user.id) %>
-      <%= link_to "ログアウト", session_path(current_user.id),method: :delete %>
-    <% else %>
-      <%= link_to "アカウント作成", new_user_path %>
-      <%= link_to "ログイン", new_session_path %>
-    <% end %>
-    <%= yield %>
+          </div>
+          <%= link_to "一覧", pictures_path, class: "left" %>
+
+          <% if logged_in? %>
+            <%= link_to "投稿する", new_picture_path, class: "left" %>
+            <%= link_to "お気に入り", favorites_path, class: "left" %>
+            <%= link_to "マイページ", user_path(current_user.id), class: "right" %>
+            <%= link_to "ログアウト", session_path(current_user.id),method: :delete, class: "right" %>
+          <% else %>
+            <%= link_to "アカウント作成", new_user_path, class: "right" %>
+            <%= link_to "ログイン", new_session_path, class: "right" %>
+          <% end %>
+        </div>
+      </header>
+      <div class="main">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

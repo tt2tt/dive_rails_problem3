@@ -1,0 +1,42 @@
+body{
+  background-color: #f8f8ff;
+}
+
+header{
+  height: 60px;
+  width: 100vw;
+  background: #fff;
+  position: fixed;
+  left: 0;
+}
+
+.inside{
+  max-width: 1150px;
+  margin: auto;
+}
+
+header #app_name{
+  margin-top: -6px;
+}
+
+header #sill{
+  height: 26px;
+  width: 1px;
+  margin-top: 14px;
+  padding: 0;
+  background-color: #262626;
+}
+
+header .left{
+  padding: 15px;
+  float: left;
+}
+
+header .right{
+  padding: 15px;
+  float: right;
+}
+
+.main{
+  padding-top: 65px;
+}

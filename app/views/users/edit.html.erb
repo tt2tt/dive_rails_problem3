@@ -1,1 +1,28 @@
-<%= render 'form' %>
+<div class="profile_edit">
+  <%= form_with(model: @user, local: true) do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this @user from being saved:</h2>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= image_tag @user.profile_image.url,id: "profile_image_edit" %>
+    <p><%= f.file_field :profile_image %></p>
+
+    <p><%= f.text_field :name, :placeholder => "名前" %></p>
+
+    <p><%= f.email_field :email, :placeholder => "メールアドレス" %></p>
+
+    <p><%= f.password_field :password, :placeholder => "パスワード" %></p>
+
+    <p><%= f.password_field :password_confirmation, :placeholder => "パスワード（確認）" %></p>
+
+    <p><%= f.submit "登録する" %></p>
+  <% end %>
+
+</div>

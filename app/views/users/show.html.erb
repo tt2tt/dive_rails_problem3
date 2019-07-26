@@ -1,8 +1,11 @@
-<%= image_tag @user.profile_image.url %>
-<h1><%= @user.name %></h1>
-<p>メールアドレス:<%= @user.email %></p>
+<%= image_tag @user.profile_image.url, id: "profile_show" %>
 
-<% if logged_in? %>
-  <%= link_to "編集する", edit_user_path(current_user.id) %>
-  <%= link_to '削除する', user_path, method: :delete, data: { confirm: '本当に削除しますか?' } %>
-<% end %>
+<div class="profile">
+  <h1><%= @user.name %></h1>
+  <p>メールアドレス:<%= @user.email %></p>
+
+  <% if logged_in? %>
+    <%= link_to "編集する", edit_user_path(current_user.id) %>
+    <%= link_to '削除する', user_path, method: :delete, data: { confirm: '本当に削除しますか?' } %>
+  <% end %>
+</div>
