@@ -1,18 +1,25 @@
-<strong>Images:</strong>
-
-<% unless @picture.user_id == current_user.id %>
-  <% if @favorite.present? %>
-    <%= link_to 'お気に入りを解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to 'お気に入りする', favorites_path(picture_id: @picture.id, sentence_id: @sentence.id), method: :post, class: 'btn btn-primary' %>
+<div class="show">
+  <% if logged_in? %>
+  <% unless @picture.user_id == current_user.id %>
+    <% if @favorite.present? %>
+    <p class="show_option">
+      <%= link_to 'お気に入りを解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+    </p>
+    <% else %>
+    <p class="show_option">
+      <%= link_to 'お気に入りする', favorites_path(picture_id: @picture.id, sentence_id: @sentence.id), method: :post, class: 'btn btn-primary' %>
+    </p>
+    <% end %>
+    <p class="show_option"><%= link_to 'Edit', edit_picture_path(@picture) %></p>
   <% end %>
-<% end %>
-
-  <%= @sentence.content %>
-  <% @picture.images.each do |picture| %>
-    <%= image_tag picture.url %>
   <% end %>
 
 
-  <%= link_to 'Edit', edit_picture_path(@picture) %>
-  <%= link_to 'Back', pictures_path %>
+  <div class="contribution">
+    <%= @picture.user.name %>
+    <p><%= @sentence.content %></p>
+    <% @picture.images.each do |picture| %>
+      <%= image_tag picture.url %>
+    <% end %>
+  </div>
+</div>

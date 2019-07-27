@@ -1,6 +1,6 @@
 img{
-  height: 310px;
-  width: 310px;
+  height: 300px;
+  width: 300px;
 }
 
 .contribution{
@@ -13,4 +13,36 @@ img{
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.show_option{
+margin-left: 20px;
+}
+
+.form img{
+  margin: 20px 20px;
+}
+
+.confirm img{
+  margin: 20px 20px;
+}
+
+.confirm_option{
+  margin-left: 25px;
+}
+
+.form_option{
+  margin-left: 20px;
+}
+
+.form img{
+  margin: 20px 20px;
+}
+
+.new_option{
+  margin-left: 45px;
+}
+
+.favorite_option{
+  margin-left: 20px;
 }

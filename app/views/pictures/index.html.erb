@@ -15,9 +15,9 @@
         <% if current_user %>
           <% if current_user.id == picture.user_id%>
             <%= link_to 'Edit', edit_picture_path(picture) %>
+            <%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
         <% end %>
-        <%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %>
       <% count += 1 %>
     </div>
     <% end %>
