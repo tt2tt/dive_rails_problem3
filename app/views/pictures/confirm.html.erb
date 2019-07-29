@@ -1,9 +1,9 @@
 <div class="confirm">
   <h1 class="confirm_option">確認画面</h1>
   <%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
-  <%= fields_for(@sentence) do |sentence| %>
-    <p class="confirm_option"<%= sentence.text_field :content %></p>
-  <% end %>
+    <%= form.hidden_field :writing %>
+    <p class="confirm_option" ><%= @picture.writing%></p>
+
   <% @picture.images.each do |picture| %>
     <%= image_tag picture.url %>
   <% end %>
@@ -15,6 +15,7 @@
     <%= fields_for(@sentence) do |sentence| %>
       <%= sentence.hidden_field :content %>
     <% end %>
+    <%= form.hidden_field :writing %>
     <%= form.hidden_field :images_cache, class: "confirm_option" %>
     <%= form.submit "戻る", name: "back", class: "confirm_option" %>
   <% end %>

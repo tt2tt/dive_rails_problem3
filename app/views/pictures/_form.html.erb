@@ -1,36 +1,39 @@
 <div class="form">
   <%= form_with(model: picture, local: true, url: choose_new_or_edit) do |form| %>
-    <% if picture.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(picture.errors.count, "error") %> prohibited this picture from being saved:</h2>
+<% if picture.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(picture.errors.count, "error") %> prohibited this picture from being saved:</h2>
 
-        <ul>
-        <% picture.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
+    <ul>
+    <% picture.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
     <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="contribution">
+  <p class="form_option"><%= form.label :writing %></p>
+  <p class="form_option"><%= form.text_field :writing %></p>
 
-    <div class="field">
-      <%= form_for @picture do |f| %>
-        <%= fields_for(@sentence) do |sentence| %>
-          <div class="contribution">
-            <p class="form_option"><%= sentence.label :content %></p>
-            <p class="form_option"><%= sentence.text_field :content %></p>
-          <% end %>
+  <p class="form_option"><%= form.file_field :images, multiple: true %></p>
+  <% @picture.images.each do |picture| %>
+       <%= image_tag (picture.url) %>
+    <% end %>
+  <%= form.hidden_field :images_cache %>
 
-          <p class="form_option"><%= form.label :images %></p>
-          <p class="form_option"><%= form.file_field :images, multiple: true %></p>
+  <p class="form_option"><%= form.submit %></p>
+</div>
 
-           <% @picture.images.each do |picture| %>
-              <%= image_tag (picture.url) %>
-           <% end %>
+  <div class="content">
 
-          <%= form.hidden_field :images_cache %>
-          <p class="form_option"><%= form.submit %></p>
-          </div>
-      <% end %>
-    </div>
-  <% end %>
+  </div>
+
+  <div class="image">
+
+  </div>
+
+  <div class="actions">
+
+  </div>
+<% end %>
 </div>

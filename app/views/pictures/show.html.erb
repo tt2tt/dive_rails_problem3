@@ -1,23 +1,24 @@
 <div class="show">
-  <% if logged_in? %>
-  <% unless @picture.user_id == current_user.id %>
-    <% if @favorite.present? %>
-    <p class="show_option">
-      <%= link_to 'お気に入りを解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
-    </p>
-    <% else %>
-    <p class="show_option">
-      <%= link_to 'お気に入りする', favorites_path(picture_id: @picture.id, sentence_id: @sentence.id), method: :post, class: 'btn btn-primary' %>
-    </p>
+  <div class="contribution"
+    <% if logged_in? %>
+      <% unless @picture.user_id == current_user.id %>
+      <% if @favorite.present? %>
+        <p class="show_option">
+          <%= link_to 'お気に入りを解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+        </p>
+      <% else %>
+        <p class="show_option">
+          <%= link_to 'お気に入りする', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-primary' %>
+        </p>
+      <% end %>
+      <p class="show_option"><%= link_to 'Edit', edit_picture_path(@picture) %></p>
     <% end %>
-    <p class="show_option"><%= link_to 'Edit', edit_picture_path(@picture) %></p>
-  <% end %>
   <% end %>
 
 
-  <div class="contribution">
-    <%= @picture.user.name %>
-    <p><%= @sentence.content %></p>
+
+    <p class="show_option"><%= @picture.user.name %></p>
+    <p class="show_option"><%= @picture.writing %></p>
     <% @picture.images.each do |picture| %>
       <%= image_tag picture.url %>
     <% end %>

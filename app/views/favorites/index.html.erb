@@ -3,7 +3,7 @@
   <% @favorites.each do |favorite| %>
     <div class="contribution">
       <p><%= link_to 'Show', picture_path(favorite.picture.id) %></p>
-      <p><%= favorite.sentence.content %></p>
+      <p><%= favorite.picture.writing %></p>
       <%= image_tag favorite.picture.images[0].url %>
     </div>
   <% end %>

@@ -9,7 +9,7 @@
         <i class="far fa-clone"></i>
       <% end %>
     </p>
-    <p id="sentence"><%= @sentences[count].content %></p>
+    <p id="sentence"><%= picture.writing %></p>
     <p><%= image_tag picture.images[0].url %></p>
       <%= link_to 'Show', picture %>
         <% if current_user %>
