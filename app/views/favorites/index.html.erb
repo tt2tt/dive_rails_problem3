@@ -2,9 +2,15 @@
   <h3 class="favorite_option">お気に入り</h3>
   <% @favorites.each do |favorite| %>
     <div class="contribution">
-      <p><%= link_to 'Show', picture_path(favorite.picture.id) %></p>
+      <p>
+        <%= favorite.user.name %>
+        <% if favorite.picture.images.length != 1 %>
+          <i class="far fa-clone"></i>
+        <% end %>
+      </p>
       <p><%= favorite.picture.writing %></p>
       <%= image_tag favorite.picture.images[0].url %>
+      <p><%= link_to 'Show', picture_path(favorite.picture.id) %></p>
     </div>
   <% end %>
 </div>
