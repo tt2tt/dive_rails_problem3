@@ -1,6 +1,4 @@
-<h1>Editing Picture</h1>
+<h3 class="edit">編集する</h3>
+<%= link_to '戻る', pictures_path , class: "edit"%>
 
 <%= render 'form', picture: @picture %>
-
-<%= link_to 'Show', @picture %> |
-<%= link_to 'Back', pictures_path %>
