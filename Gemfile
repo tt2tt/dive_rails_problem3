@@ -37,6 +37,8 @@ end
 
 group :development do
 
+  gem 'letter_opener_web'
+
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
 

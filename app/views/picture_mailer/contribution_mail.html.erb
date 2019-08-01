@@ -1,0 +1,11 @@
+<h1>ご投稿が完了しました！</h1>
+
+<h4><%= @contribution.user.name %></h4>
+
+<h4>ご投稿内容の確認</h4>
+
+<p><%= @contribution.writing %></p>
+
+<% @contribution.images.each do |picture| %>
+ <p><%= image_tag (picture.url) %></p>
+<% end %>

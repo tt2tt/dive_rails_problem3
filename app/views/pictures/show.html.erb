@@ -14,7 +14,6 @@
     <% end %>
   <% end %>
 
-    <%= link_to '戻る', pictures_path, class: "option" %>
     <p class="option"><%= @picture.user.name %></p>
     <p class="option"><%= @picture.writing %></p>
     <% @picture.images.each do |picture| %>
