@@ -2,7 +2,7 @@
   <%= form_with(model: picture, local: true, url: choose_new_or_edit) do |form| %>
 <% if picture.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(picture.errors.count, "error") %> 件のエラーがあります。</h2>
+    <h2><%= pluralize(picture.errors.count) %> 件のエラーがあります。</h2>
 
     <ul>
     <% picture.errors.full_messages.each do |message| %>
@@ -22,7 +22,7 @@
 
   <%= form.hidden_field :images_cache %>
 
-  <p class="option"><%= form.submit %></p>
+  <p class="option"><%= form.submit "投稿する" %></p>
 </div>
 <% end %>
 </div>
