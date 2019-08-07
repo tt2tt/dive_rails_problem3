@@ -7,5 +7,5 @@
 <p><%= @contribution.writing %></p>
 
 <% @contribution.images.each do |picture| %>
- <p><%= image_tag picture.url %></p>
+ <p><%= image_tag ("https://shrouded-sands-22493.herokuapp.com" + picture.url) %></p>
 <% end %>
