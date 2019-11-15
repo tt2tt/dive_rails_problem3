@@ -10,7 +10,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'faker'
 gem 'dotenv-rails'
-
+gem 'fog-aws'
 
 gem 'rails', '~> 5.1.1'
 
