@@ -11,6 +11,8 @@ gem 'mini_magick'
 gem 'faker'
 gem 'dotenv-rails'
 gem 'fog-aws'
+gem 'unicorn'
+ gem 'mini_racer', platforms: :ruby
 
 gem 'rails', '~> 5.1.1'
 
@@ -47,5 +49,12 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+group :development, :test do
+    gem 'capistrano', '3.6.0'
+    gem 'capistrano-bundler'
+    gem 'capistrano-rails'
+    gem 'capistrano-rbenv'
+    gem 'capistrano3-unicorn'
+  end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
