@@ -38,6 +38,7 @@ class PicturesController < ApplicationController
 
   def create
     @picture = current_user.pictures.build(picture_params)
+    logger.debug @picture.errors.inspect
 
     respond_to do |format|
       if @picture.save
