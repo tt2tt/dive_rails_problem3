@@ -33,20 +33,6 @@ gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
 
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-
-  gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
-
-  gem 'capistrano', '3.6.0' # capistranoのツール一式
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails'
-  gem 'capistrano-rbenv'
-  gem 'capistrano3-unicorn'
-end
-
-group :development do
-
   gem 'letter_opener_web'
 
   gem 'web-console', '>= 3.3.0'
@@ -54,7 +40,19 @@ group :development do
 
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-end
 
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  gem 'capybara', '~> 2.13'
+  gem 'selenium-webdriver'
+
+  gem 'capistrano', '3.6.0' 
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
+  gem 'ed25519'
+  gem 'bcrypt_pbkdf'
+end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
