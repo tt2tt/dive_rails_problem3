@@ -11,7 +11,8 @@ gem 'mini_magick'
 gem 'faker'
 gem 'dotenv-rails'
 gem 'fog-aws'
-gem 'dotenv-rails'
+gem 'unicorn'
+gem 'mini_racer', platforms: :ruby
 
 
 gem 'rails', '~> 5.1.1'
@@ -36,6 +37,12 @@ group :development, :test do
 
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+
+  gem 'capistrano', '3.6.0' # capistranoのツール一式
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
 end
 
 group :development do
