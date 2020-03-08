@@ -4,11 +4,15 @@ class ProfileUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  storage :fog
   # storage :fog
 
   def default_url
     "default.jpg"
+  end
+
+  def size_range
+    0..1.megabytes
   end
 
   # Override the directory where uploaded files will be stored.
